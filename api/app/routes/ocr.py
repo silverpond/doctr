@@ -28,7 +28,7 @@ async def perform_ocr(file: UploadFile = File(...)):
     out = predictor([img])
 
     return [
-        OCROut(box=(*word.geometry[0], *word.geometry[1]), value=word.value)
+        OCROut(box=(*word.geometry[0], *word.geometry[1]), value=word.value, confidence=word.confidence)
         for block in out.pages[0].blocks
         for line in block.lines
         for word in line.words
