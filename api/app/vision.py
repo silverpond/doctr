@@ -11,7 +11,9 @@ if any(gpu_devices):
 
 from doctr.models import kie_predictor, ocr_predictor
 
-predictor = ocr_predictor(pretrained=True)
+predictor = ocr_predictor(reco_arch='parseq', assume_straight_pages=False, preserve_aspect_ratio=True, pretrained=True)
 det_predictor = predictor.det_predictor
+det_predictor.model.postprocessor.bin_thresh = 0.3
+det_predictor.model.postprocessor.bin_thresh = 0.2
 reco_predictor = predictor.reco_predictor
 kie_predictor = kie_predictor(pretrained=True)
