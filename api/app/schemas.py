@@ -3,7 +3,7 @@
 # This program is licensed under the Apache License 2.0.
 # See LICENSE or go to <https://opensource.org/licenses/Apache-2.0> for full license details.
 
-from typing import Tuple
+from typing import Tuple, List
 
 from pydantic import BaseModel, Field
 
@@ -14,7 +14,7 @@ class RecognitionOut(BaseModel):
 
 
 class DetectionOut(BaseModel):
-    box: Tuple[float, float, float, float]
+    geometry: List[Tuple[float, float]] # Tuple[float, float, float, float]
 
 
 class ConfidenceOut(BaseModel):
